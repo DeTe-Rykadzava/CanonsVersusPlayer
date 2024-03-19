@@ -19,7 +19,7 @@ namespace Player
         [SerializeField] public Transform cameraPoint;
         [SerializeField] private Transform player;
 
-        private void Awake()
+        private void Start()
         {
             cameraPoint.rotation = player.rotation;
         }

@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+namespace Camera
 {
-    [SerializeField] public Transform cameraPoint;
-    [SerializeField] private float smoothTimeToCameraPoint = 0.1f;
-
-    private Vector3 _smoothDampVelocity;
-    
-    private void LateUpdate()
+    public class CameraControl : MonoBehaviour
     {
-        if(cameraPoint == null) return;        
-        var source = transform;
-        source.position = cameraPoint.position;
-        source.rotation = cameraPoint.rotation;
+        [SerializeField] [CanBeNull] public Transform cameraPoint;
+
+        private Vector3 _smoothDampVelocity;
+    
+        private void LateUpdate()
+        {
+            if(cameraPoint == null) return;        
+            var source = transform;
+            source.position = cameraPoint.position;
+            source.rotation = cameraPoint.rotation;
+        }
     }
 }

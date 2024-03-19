@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Camera;
+using UI;
 using UnityEngine;
 
 namespace Player
@@ -25,6 +26,7 @@ namespace Player
             var player = Instantiate<Player>(playerPrefab, spawnPoint, Quaternion.Euler(0, -90, 0));
             player.gameObject.name = "Player";
             var playerMovement = player.GetComponent<PlayerMovement>();
+            var playerCameraPointControl = player.GetComponent<PlayerFirstViewCameraPointControl>();
             _player = player;
             _playerIsNull = false;
             
@@ -44,6 +46,7 @@ namespace Player
             cameraPoint.transform.position = _player.transform.position;
             _cameraPoint = cameraPoint;
             playerMovement.cameraPoint = _cameraPoint.transform;
+            playerCameraPointControl.cameraPoint = _cameraPoint.transform;
             cameraControl.cameraPoint = _cameraPoint.transform;
         }
 
@@ -64,9 +67,11 @@ namespace Player
             var player = Instantiate<Player>(playerPrefab, spawnPoint, Quaternion.Euler(0, -90, 0));
             player.gameObject.name = "Player";
             var playerMovement = player.GetComponent<PlayerMovement>();
+            var playerCameraPointControl = player.GetComponent<PlayerFirstViewCameraPointControl>();
             _player = player;
             _playerIsNull = false;
             _playerUI.player = _player;
+            playerCameraPointControl.cameraPoint = _cameraPoint.transform;
             playerMovement.cameraPoint = _cameraPoint.transform;
         }
     }

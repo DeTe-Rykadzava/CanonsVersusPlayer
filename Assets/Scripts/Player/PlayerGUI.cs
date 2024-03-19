@@ -13,7 +13,7 @@ namespace Player
 
         private void Update()
         {
-            hitPointsText.text = player.HitPoints.ToString(CultureInfo.InvariantCulture);
+            hitPointsText.text = player.HitPoints.ToString(CultureInfo.InvariantCulture) + " / " + player.MaxHp.ToString(CultureInfo.InvariantCulture);
             hitPointsImage.fillAmount = player.HitPoints / (player.MaxHp / 100) / 100;
         }
     }
